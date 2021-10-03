@@ -1,52 +1,80 @@
 public class Main 
 {
+    /*
+    1. Nivel de bază_ (marca 5 || 6):
+Creați un program, unde ar trebui să instanțiați 3 obiecte de tip Box
+(care ar trebui să aibă următoarele variabile de instanță -> înălțime, lățime și adâncime),
+prin intermediul constructorului său în 3 moduri diferite:
+1. Fără parametri (toate variabilele de instanță ar trebui să aibă valoarea implicită 1)
+2. Cu 1 parametru (toate variabilele de instanță ar trebui să aibă aceeași valoare)
+3. Cu 3 parametri (pentru fiecare variabilă de instanță)
+2. Nivel mediu_ (marca 7 || 8):
+Creați o coadă de clasă și creați 2 obiecte de acest tip. Fiecare coadă ar trebui să aibă ca stare
+numărul de elemente din acesta și poate fi creat prin constructori cu și fără parametru.
+Dacă este creat cu parametru, atunci ar trebui să aibă valoarea parametrului dimensiunea maximă, altfel
+nu ar trebui să aibă această limitare.
+Ar trebui să puteți adăuga la coadă printr-o metodă `queue.push (Type value);`. De asemenea, ar trebui să puteți
+pentru a extrage articolele din coadă prin metoda `queue.pop ();`.
+Regula pentru push și pop la coadă ar trebui să o luați în considerare de la cursul Structuri de date 
+sau să o găsiți undeva în web, regula `FIFO`.
+În program după ce creați cozile (cu param și fără), adăugați cu 3 valori la coadă și apoi
+extrageți ultima valoare din fiecare dintre ele și imprimați în consolă.
+3. Nivel avansat_ (marca 9 || 10):
+Implementați două metode pentru calculul suprafeței și volumului unei cutii și utilizați-o pe o cutie creată
+cu 3 variabile de instanță diferite. Imprimați rezultatele în consolă.
+În clasa Queue adăugați o metodă pentru a verifica dacă obiectul este gol și una care verifică dacă obiectul
+este plin (în cazul în care coada nu are parametri, ar trebui să spună că nu este niciodată plină, altfel 
+ar trebui să verifice numărul de elemente comparativ cu dimensiunea cozii). De asemenea, utilizați aceste 
+metode într-un program și imprimați rezultatele în consolă.
+    */
     public static void main(String[] args)
     {
-        System.out.println("Sarcină la nivel de bază:\n");
+        System.out.println("Nivel mic:");
 
-        Monitor monitor = new Monitor("galben", 15, "1080 x 1920");
-        System.out.println(monitor.arataDate());
+        Box b1 = new Box();
+        Box b2 = new Box(15);
+        Box b3 = new Box(25,6,98);
 
-        Monitor monitor1 = new Monitor("ros", 15, "2160 x 3840");
-        System.out.println(monitor1.arataDate1());
+        System.out.println("Boxa 1:");
+        System.out.println("Dimensiunea: "+ b1.rezultat());
+        System.out.println("Suprafata: " + b1.suprafata() + "cm2");
+        System.out.println("Volumul: " + b1.volum() + "cm3");
+        
+        System.out.println("Boxa 2:");
+        System.out.println("Dimensiunea: "+ b2.rezultat());
+        System.out.println("Suprafata: " + b2.suprafata() + "cm2");
+        System.out.println("Volumul: " + b2.volum() + "cm3");
+        
+        System.out.println("Boxa 3:");
+        System.out.println("Dimensiunea: "+ b3.rezultat());
+        System.out.println("Suprafata: " + b3.suprafata() + "cm2");
+        System.out.println("Volumul: " + b3.volum() + "cm3");
 
-        if (monitor.culoare.equals(monitor1.culoare)){System.out.println("Monitoarele au aceeași culoare.");}
-        else {System.out.println("Monitoarele au culori diferite. Mai întâi are culoarea " + monitor.culoare + " , a doua culoare este " + monitor1.culoare + " .");}
+        System.out.println("\nNivel avansat:");
 
-        if (monitor.rezolutie.equals(monitor1.rezolutie)){System.out.println("Monitoarele au aceeași rezoluție.");}
-        else {System.out.println("Monitoarele au rezoluții diferite. Mai întâi are rezolutia " + monitor.rezolutie + " , a doua rezolutie are" + monitor1.rezolutie + ".");}
+        Coada q1 = new Coada(5);
+        Coada q2 = new Coada();
 
-        if(monitor.dimensiune > monitor1.dimensiune) {System.out.println("Primul are monitor are dimensiuni mai mari.");}
-        else if(monitor.dimensiune < monitor1.dimensiune) { System.out.println("Al doilea monitor are dimensiuni mai mari.");} 
-        else if(monitor.dimensiune == monitor1.dimensiune){System.out.println("Dimensiunea e egala.");}
+        System.out.println("\nPrima coadă:");
+        q1.push(12);
+        q1.push(20);
+        q1.push(65);
 
-        System.out.println("\nNivel avansat:\n");
+        q1.pop();
+        q1.esteGol();
+        q1.estePlin();
 
-        Student s1 = new Student("Moruz Ana-Maria", 21, 9.99);
-        Student s2 = new Student("Caruta Diana", 19, 7.99);
-        Student s3 = new Student("Balan Ana", 19, 10);
-        Student s4 = new Student("Camenschi Nina", 20, 9.21);
-        Student s5 = new Student("Gherganov Serghei", 23, 6.35);
-        Student s6 = new Student("Manolachi Nikoleta", 19, 8.32);
-        Student s7 = new Student("Petrenco Alexandra", 21, 9.27);
-        Student s8 = new Student("Sibov Sergiu", 23, 5.01);
-        Student s9 = new Student("Cuculer Alina", 20, 9.65);
+        System.out.println("Coada are " + q1.size() + " elemente.");
 
-        Student[] UTM  = {s1,s2,s3};
-        Student[] ULIM = {s4,s5,s6};
-        Student[] UASM = {s7,s8,s9};
+        System.out.println("\nA doua coadă:");
+        q2.push(43);
+        q2.push(21);
+        q2.push(37);
 
-        University u1 = new University(UTM,"Universitatea Thehnica din Moldova", 1964);
-        University u2 = new University(ULIM,"Universitatea Libera Internationala din Moldova", 1992);
-        University u3 = new University(UASM,"Universitatea Agrară de Stat din Moldova",1933);
+        q2.pop();
+        q2.esteGol();
+        q2.estePlin();
 
-        System.out.println("Nota medie a studenților UTM: " + s1.nume + ", " + s2.nume + ", " + s3.nume + " este: " + u1.media());
-        System.out.println("Nota medie a studenților ULIM: " + s4.nume + ", " + s5.nume + ", " + s6.nume + " este: " + u2.media());
-        System.out.println("Nota medie a studenților UTM: " + s7.nume + ", " + s8.nume + ", " + s9.nume + " este: " + u3.media());
-
-        double Avg, a = u1.media(), b = u2.media(), c = u3.media();
-        Avg = (a + b + c)/3;
-
-        System.out.println("Nota medie a UTM, ULIM și UASM este: " + Avg);
+        System.out.println("Coada are " + q2.size() + " elemente.");
     }
 }
